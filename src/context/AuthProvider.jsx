@@ -50,6 +50,10 @@ const AuthProvider = ({children}) => {
         autenticarUsuario()
 
     },[])
+
+    const cerrarSesionAuth = () => {
+        setAuth({})
+    }
     
     return(
 
@@ -57,7 +61,8 @@ const AuthProvider = ({children}) => {
             value={{
                 auth,
                 cargando,
-                setAuth
+                setAuth,
+                cerrarSesionAuth
             }}
         >
              {children}

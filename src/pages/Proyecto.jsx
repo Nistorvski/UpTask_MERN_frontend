@@ -1,19 +1,21 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom"
 import ModalEliminarTarea from "../components/ModalEliminarTarea";
 import ModalFormularioTarea from "../components/ModalFormularioTarea";
 import ModalEliminarColaborador from "../components/ModalEliminarColaborador";
 import Tarea from "../components/Tarea";
 import useProyectos from "../hooks/useProyectos";
-import Alerta from "../components/Alerta";
 import Colaborador from "../components/Colaborador";
 import useAdmin from "../hooks/useAdmin";
+import io from 'socket.io-client';
+
+let socket;
 
 const Proyecto = () => {
 
   const params = useParams();
 
-  const {proyecto, cargando, obtenerProyecto, handleModalTarea, setAlerta, alerta} = useProyectos(); 
+  const {proyecto, cargando, obtenerProyecto, handleModalTarea, alerta, submitTareasProyecto, eliminarTareaProyecto, actualizarTareaProyecto, cambiarEstadoTarea} = useProyectos(); 
 
    const admin = useAdmin();
 
@@ -21,6 +23,54 @@ const Proyecto = () => {
     useEffect(() => {
         obtenerProyecto(params.id);
     },[])
+
+    //*Este useEffect tiene dependenciapara ejecutarse una sola vez que se abra el proyecto y el ususario entre en este room de socket.io
+    useEffect(() => {
+
+        socket = io(import.meta.env.VITE_BACKEND_URL);
+
+        socket.emit('abrir proyecto', params.id)
+
+    }, []);
+
+    useEffect(() => {
+        socket.on('tarea agregada', tareaNueva => {
+            if(tareaNueva.proyecto === proyecto._id) {
+                
+                submitTareasProyecto(tareaNueva);
+
+            }
+        })
+
+        socket.on('tarea eliminada', tareaELiminada => {
+            if(tareaELiminada.proyecto === proyecto._id) {
+                
+                eliminarTareaProyecto(tareaELiminada);
+
+            }
+        });
+
+        socket.on('tarea actualizada', tareaActualizada => {
+            if(tareaActualizada.proyecto._id === proyecto._id){
+               
+                actualizarTareaProyecto(tareaActualizada);
+            
+            }
+        });
+
+        socket.on('nuevo estado', nuevoEstadoTarea => {
+            if(nuevoEstadoTarea.proyecto._id === proyecto._id) {
+                cambiarEstadoTarea(nuevoEstadoTarea);
+            }
+        })
+    })
+
+    ///*En cambio este useEffect no tineen dependencia para que se ejecute con cada cambio/envio/emision de socket.
+    // // useEffect(() => {
+    // //     socket.on('respuesta', (persona) =>{
+    // //         console.log(persona)
+    // //     })
+    // // })
 
     const { nombre } = proyecto
    // console.log(proyecto);
