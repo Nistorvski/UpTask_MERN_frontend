@@ -40,7 +40,7 @@ const OlvidePassword = () => {
   const { msg } = alerta;
 
   return (
-    <>
+    <div>
     <h1 className='text-sky-600 font-black text-6xl capitalize'>Recupera tu acceso y no pierdas tus {' '}
       <span className='text-slate-700'>proyectos</span>
     </h1>
@@ -94,7 +94,7 @@ const OlvidePassword = () => {
       </Link>
     </nav>
 
-  </>
+  </div>
   )
 }
 

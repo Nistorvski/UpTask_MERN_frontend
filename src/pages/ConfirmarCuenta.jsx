@@ -42,7 +42,7 @@ const ConfirmarCuenta = () => {
   const { msg } = alerta;
 
   return (
-    <>
+    <div>
       <h1 className="text-sky-600 font-black text-6xl capitalize">
         Confirma tu cuenta y comienza a crear tus{" "}
         <span className="text-slate-700">proyectos</span>
@@ -60,7 +60,7 @@ const ConfirmarCuenta = () => {
       
       </div>
 
-    </>
+    </div>
   );
 };
 

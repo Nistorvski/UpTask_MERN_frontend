@@ -18,7 +18,7 @@ const NuevoColaborador = () => {
     if(!proyecto._id) return <Alerta alerta={alerta} />
 
     return (
-   <>
+   <div>
     <h1 className="text-4xl font-black">Añadir Colaborador/a <span className="text-2xl text-gray-600"> al Proyecto: {proyecto.nombre}</span></h1>
     <div className="flex items-center justify-center mt-10">
     
@@ -52,7 +52,7 @@ const NuevoColaborador = () => {
       </div>    
     )}
    
-   </>
+   </div>
   )
 }
 

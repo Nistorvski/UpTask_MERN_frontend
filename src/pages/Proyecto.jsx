@@ -85,7 +85,7 @@ const Proyecto = () => {
         
       
         
-    <>
+    <div>
         <div className="flex justify-between">
         
              <h1 className="font-black text-4xl">{nombre}</h1>
@@ -136,7 +136,7 @@ const Proyecto = () => {
         </div>
 
             {admin && (
-                <>
+                <div>
                             <div className="flex items-center justify-between ">
             <p className="font-bold text-xl mt-10">Colaboradores</p>
             <Link
@@ -159,14 +159,14 @@ const Proyecto = () => {
                 <p className="text-center my5 p-10" > No hay colaboradores para este proyecto</p>
             }
         </div>
-                </>
+                </div>
             )}
 
         <ModalFormularioTarea />
         <ModalEliminarTarea />
         <ModalEliminarColaborador />
 
-    </>
+    </div>
     
   )
 }

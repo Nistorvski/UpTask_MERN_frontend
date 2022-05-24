@@ -27,7 +27,7 @@ const Proyectos = () => {
 
   return (
    
-    <>
+    <div>
 
     <h1 className='text-4xl font-black' >Proyectos</h1>
 
@@ -45,7 +45,7 @@ const Proyectos = () => {
         
       : <p className=' text-center text-gray-600 uppercase p-5'>No hay proyectos aún</p>}
     </div>
-   </>
+   </div>
   )
 }
 

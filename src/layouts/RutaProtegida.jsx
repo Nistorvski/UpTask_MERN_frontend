@@ -11,7 +11,7 @@ const RutaProtegida = () => {
     if(cargando) return 'Cargando...'
 
   return (
-    <>
+    <div>
         {auth._id ? 
             (
                 <div className='bg-gray-100'>
@@ -26,7 +26,7 @@ const RutaProtegida = () => {
                 </div>
             )
         : <Navigate to="/" />}
-    </>
+    </div>
   )
 }
 

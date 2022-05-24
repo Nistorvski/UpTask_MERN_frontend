@@ -27,7 +27,7 @@ const EditarProyecto = () => {
 
   return (
 
-    <>
+    <div>
      
     
       <div className="flex justify-between">
@@ -49,7 +49,7 @@ const EditarProyecto = () => {
         <FormularioProyectos />
      </div>
    
-    </>
+    </div>
   )
 }
 
