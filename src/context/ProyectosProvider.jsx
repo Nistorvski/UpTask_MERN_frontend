@@ -286,7 +286,6 @@ const ProyectosProvider = ({children}) => {
             }
 
             const {data} = await clienteAxios.put(`/tareas/${tarea.id}`, tarea, config)
-
            
 
             //Quitar las alertas y cerrar el modal
