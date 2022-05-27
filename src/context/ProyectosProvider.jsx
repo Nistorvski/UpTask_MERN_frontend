@@ -291,9 +291,19 @@ const ProyectosProvider = ({children}) => {
             //Quitar las alertas y cerrar el modal
             setAlerta({})
             setModalFormularioTarea(false)
+         
+
+         actualizarTareaProyecto = tarea => {
+         
+         //*Actualizar el Dom
+         const proyectoActualizado = {...proyecto}
+         proyectoActualizado.tareas = proyectoActualizado.tareas.map(tareaState => tareaState._id === tarea._id ? tarea : tareaState)
+         setProyecto(proyectoActualizado) 
+
+
 
             //Socket    
-            socket.emit('actualizar tarea', data);
+            //socket.emit('actualizar tarea', data);
 
         }catch(error){
             console.log(error);
@@ -505,12 +515,9 @@ const ProyectosProvider = ({children}) => {
                proyectoActualizado.tareas = proyectoActualizado.tareas.filter(tareaState => tareaState._id !== tarea._id )
                setProyecto(proyectoActualizado)   
     }
-    const actualizarTareaProyecto = tarea => {
-         //*Actualizar el Dom
-         const proyectoActualizado = {...proyecto}
-         proyectoActualizado.tareas = proyectoActualizado.tareas.map(tareaState => tareaState._id === tarea._id ? tarea : tareaState)
-         setProyecto(proyectoActualizado)
-    }
+    const actualizarTareaProyecto(proyectoActualizado)
+     console. log("Editar prpyecto" ) 
+  }
 
     const cambiarEstadoTarea = tarea => {
         const proyectoActualizado = {...proyecto}
