@@ -293,7 +293,7 @@ const ProyectosProvider = ({children}) => {
             setModalFormularioTarea(false)
          
 
-         actualizarTareaProyecto = tarea => {
+    
          
          //*Actualizar el Dom
          const proyectoActualizado = {...proyecto}
@@ -515,7 +515,7 @@ const ProyectosProvider = ({children}) => {
                proyectoActualizado.tareas = proyectoActualizado.tareas.filter(tareaState => tareaState._id !== tarea._id )
                setProyecto(proyectoActualizado)   
     }
-    const actualizarTareaProyecto(proyectoActualizado)
+    const actualizarTareaProyecto = tarea => {
      console. log("Editar prpyecto" ) 
   }
 
